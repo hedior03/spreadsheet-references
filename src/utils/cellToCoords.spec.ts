@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.218.2/assert/mod.ts";
-import { cellToCoords } from "./cellToCoords.ts";
+import { cellToCoords } from "../utils/cellToCoords.ts";
 
 Deno.test("a1", () => {
   assertEquals(cellToCoords("a1"), [0, 0]);

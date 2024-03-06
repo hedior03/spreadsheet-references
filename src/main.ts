@@ -1,4 +1,4 @@
-import { coordsToCellRef } from "./coordsToCellRef.ts";
+import { coordsToCellRef } from "./utils/coordsToCellRef.ts";
 import { evaluateCell } from "./evaluateCell.ts";
 import { getSpreadsheet } from "./getSpreadsheet.ts";
 
@@ -9,7 +9,7 @@ export const prettyPrintSpreadsheet = (
     row.join(",\t")
   )).join("\n");
 
-  console.log(output);
+  console.log(output.trim());
 };
 
 export const main = async (filename: string) => {

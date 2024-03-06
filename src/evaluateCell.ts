@@ -1,5 +1,5 @@
 import { evaluatePostfix } from "./evaluatePostfix.ts";
-import { isNumeric } from "./isNumeric.ts";
+import { isNumeric } from "./validation/isNumeric.ts";
 
 const computedCells = new Map<string, number>();
 

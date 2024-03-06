@@ -1,4 +1,4 @@
-import { isCellRef } from "./isCellRef.ts";
+import { isCellRef } from "../validation/isCellRef.ts";
 
 export const cellToCoords = (cellReference: string): number[] => {
   if (isCellRef(cellReference)) {

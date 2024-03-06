@@ -1,6 +1,6 @@
-import { isNumeric } from "./isNumeric.ts";
-import { isCellRef } from "./isCellRef.ts";
-import { cellToCoords } from "./cellToCoords.ts";
+import { isNumeric } from "./validation/isNumeric.ts";
+import { isCellRef } from "./validation/isCellRef.ts";
+import { cellToCoords } from "./utils/cellToCoords.ts";
 import { evaluateCell } from "./evaluateCell.ts";
 
 export const ERROR_CELL = "#ERR";
@@ -14,6 +14,7 @@ export const evaluatePostfix = (
   const stack: (number)[] = [];
 
   if (typeof expression === "number") return expression;
+  if (expression === undefined) return ERROR_CELL;
 
   const tokensArray = expression.split(/\s+/);
 
@@ -65,9 +66,6 @@ export const evaluatePostfix = (
             }
             stack.push(left / right);
             break;
-          default:
-            // it is a expression, this is the most demanding Recursive call
-            evaluateCell(token, currentCellRef, visitedNodes, table);
         }
       }
     });
