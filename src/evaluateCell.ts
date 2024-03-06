@@ -11,7 +11,6 @@ export const evaluateCell = (
 ) => {
   if (visitedNodes.has(currentCellRef)) {
     // Circular dependency
-    console.log("Circular dependency, visited", visitedNodes);
     return "#ERR";
   }
 
@@ -31,10 +30,7 @@ export const evaluateCell = (
   if (isNumeric(cellValue)) {
     const numericValue = Number.parseFloat(cellValue);
 
-    if (currentCellRef === "B1") console.log(computedCells);
-    if (currentCellRef === "B1") console.log(cellValue);
     computedCells.set(currentCellRef, numericValue);
-    if (currentCellRef === "B1") console.log(computedCells);
 
     return numericValue;
   }
@@ -50,8 +46,5 @@ export const evaluateCell = (
   if (typeof evaluatedExpression === "number") {
     computedCells.set(currentCellRef, evaluatedExpression);
     return evaluatedExpression;
-  } else {
-    // shouldn't get here
-    console.error(currentCellRef, evaluatedExpression);
   }
 };

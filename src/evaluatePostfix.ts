@@ -20,21 +20,14 @@ export const evaluatePostfix = (
   tokensArray
     .map((token) => token.toLocaleUpperCase())
     .forEach((token) => {
-      // console.log("Current stack", stack);
       if (isNumeric(token)) {
         stack.push(Number.parseFloat(token));
       } else if (typeof token === "string" && isCellRef(token)) {
         const [columnIndex, rowIndex] = cellToCoords(token);
 
-        console.log(columnIndex, rowIndex);
-
         const referencedValue = table[rowIndex][columnIndex];
 
-        console.log(
-          `Reference: ${token} -> ${referencedValue}, type: ${typeof referencedValue}`,
-        );
-
-        // now I have to call the cell solver but it shouldn't be in the entrypoint file
+        // Simple reference to a Cell, Computed or just parse
         const evaluatedReference = evaluateCell(
           referencedValue,
           token,
@@ -42,12 +35,10 @@ export const evaluatePostfix = (
           table,
         );
 
-        console.log(evaluatedReference);
         if (evaluatedReference === undefined || evaluatedReference === "#ERR") {
           return ERROR_CELL;
         }
 
-        console.log("stacking", stack);
         stack.push(evaluatedReference);
       } else {
         const right = stack.pop();
@@ -75,19 +66,15 @@ export const evaluatePostfix = (
             stack.push(left / right);
             break;
           default:
-            // This should be an expression
-            console.log(`Expression: ${token}`);
+            // it is a expression, this is the most demanding Recursive call
             evaluateCell(token, currentCellRef, visitedNodes, table);
         }
       }
     });
 
-  // console.log(`result stack: ${stack}`);
-
   if (stack.length !== 1) {
     return ERROR_CELL;
   }
 
-  console.log("Ref", currentCellRef, "RESULT:", stack[0]);
   return stack[0];
 };
