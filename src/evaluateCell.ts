@@ -1,4 +1,4 @@
-import { evaluatePostfix } from "./evaluatePostfix.ts";
+import { ERROR_CELL, evaluatePostfix } from "./evaluatePostfix.ts";
 import { isNumeric } from "./validation/isNumeric.ts";
 
 const computedCells = new Map<string, number>();
@@ -11,7 +11,7 @@ export const evaluateCell = (
 ) => {
   if (visitedNodes.has(currentCellRef)) {
     // Circular dependency
-    return "#ERR";
+    return ERROR_CELL;
   }
 
   if (computedCells.has(currentCellRef)) {

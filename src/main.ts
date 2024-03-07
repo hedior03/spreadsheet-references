@@ -1,6 +1,7 @@
 import { coordsToCellRef } from "./utils/coordsToCellRef.ts";
 import { evaluateCell } from "./evaluateCell.ts";
 import { getSpreadsheet } from "./getSpreadsheet.ts";
+import { ERROR_CELL } from "./evaluatePostfix.ts";
 
 export const prettyPrintSpreadsheet = (
   spreadsheet: (string | number)[][],
@@ -24,7 +25,7 @@ export const main = async (filename: string) => {
           currentCellRef,
           new Set<string>(),
           spreadsheet,
-        ) ?? "#ERR";
+        ) ?? ERROR_CELL;
 
         return result;
       },

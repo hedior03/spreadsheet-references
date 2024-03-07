@@ -36,7 +36,9 @@ export const evaluatePostfix = (
           table,
         );
 
-        if (evaluatedReference === undefined || evaluatedReference === "#ERR") {
+        if (
+          evaluatedReference === undefined || evaluatedReference === ERROR_CELL
+        ) {
           return ERROR_CELL;
         }
 
