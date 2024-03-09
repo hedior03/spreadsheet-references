@@ -21,6 +21,10 @@ Deno.test("Multiple operations, 5 operands", () => {
   assertEquals(evaluatePostfix("4 2 3 5 1 - + * +"), 18);
 });
 
+Deno.test("Basic scientific notation sum", () => {
+  assertEquals(evaluatePostfix("1e1 1e1 +"), 20);
+});
+
 Deno.test("ERROR: Division by Zero", () => {
   assertEquals(evaluatePostfix("10 0 /"), "#ERR");
 });
