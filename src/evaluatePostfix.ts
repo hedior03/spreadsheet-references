@@ -7,7 +7,6 @@ export const ERROR_CELL = "#ERR";
 
 export const evaluatePostfix = (
   expression: string | number,
-  currentCellRef: string,
   visitedNodes: Set<string> = new Set(),
   table: (string | number)[][] = [[""]],
 ): number | string => {
