@@ -38,7 +38,6 @@ export const evaluateCell = (
   // ...... evaluate postfix...... // (*)
   const evaluatedExpression = evaluatePostfix(
     cellValue,
-    currentCellRef,
     visitedNodes,
     table,
   );
