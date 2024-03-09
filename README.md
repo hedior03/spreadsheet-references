@@ -71,11 +71,10 @@ reduces the impact of this.
 There isn't any validation of the shape of the spreadsheets received, which
 could lead to unexpected behaviour if the CSV isn't rectangular.
 
-# Next steps
+# Next steps (Improving areas)
 
-- Improve typing, bundling them for maintainability.
-- Test thoroughly.
-- The reference between cells is done via the string transformation to
-  coordinates, this could improve if it was needed to make this code interactive
-  (Reactive).
+- Improve typing, bundling them for maintainability ( i.e. `string | number`
+  could be reused).
+- Guarantee rectangular spreadsheet.
+- Encapsulate cache hashMap into a Spreadsheet object (computedCells),
 - Validate performance (?).
